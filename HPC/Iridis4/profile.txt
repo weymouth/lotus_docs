@@ -1,0 +1,7 @@
+export MGLHOME=$HOME'/Lotus/solver'
+export PATH=$PATH:$MGLHOME/bin:$MGLHOME/oop/bin
+export MPI='true'
+export F90='gfortran'
+alias open='xdg-open'
+ulimit -s unlimited
+alias trash='gvfs-trash'

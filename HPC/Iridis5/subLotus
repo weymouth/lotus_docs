@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#SBATCH --ntasks=16					# Request number of processes (if >40, multiple nodes are used in Iridis5) 
+#SBATCH --job-name=test				# Job name
+#SBATCH --time=00:10:00		 		# Walltime
+#SBATCH --mail-type=ALL				# Mail notifications
+
+module load singularity				# Load the singularity mode
+
+runSingularity $SLURM_NTASKS test	# run the singularity container with the number of processes specified above
+

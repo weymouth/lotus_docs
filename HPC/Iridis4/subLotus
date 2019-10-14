@@ -1,0 +1,29 @@
+!/bin/bash -login
+
+# Job script to run mpi job in parallel. The line above loads your bash profile into the computational node (required to run Lotus). To run other applications the -login flag is not required.
+
+# Set resource requirements for job
+# 1. number of nodes and processors per nodes
+# 2. runtime expected
+# 3. job name
+# - these can be overridden on the qsub command line
+
+PBS -l nodes=1:ppn=8
+PBS -l walltime=00:20:00
+PBS -N testing
+PBS -m abe
+
+# Load required modules so that the commands at the computational node are found
+module purge
+module load binutils/2.26
+module load openmpi/1.8.3/gcc
+module load gcc/6.1.0
+module load R/3.3.0
+
+# Change to directory from which job was submitted
+cd $PBS_O_WORKDIR
+
+# Run Lotus (mpif90). Note that total np must be the same as stated before. You can also use your /scratch
+# directory if the simulation writes too much data for your /home directory.
+
+runLotus 8 test

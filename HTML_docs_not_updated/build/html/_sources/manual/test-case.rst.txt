@@ -1,0 +1,7 @@
+.. _manual-test-case:
+
+***********
+ Test Case
+***********
+
+In order to ensure that Lotus is running correctly the following test case can be run.

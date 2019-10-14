@@ -1,0 +1,341 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Running Simulations &mdash; Lotus 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Lotus 1.0 documentation" href="../../index.html"/>
+        <link rel="up" title="Simulations" href="index.html"/>
+        <link rel="next" title="Serial Simulations" href="serial-simulations.html"/>
+        <link rel="prev" title="Simulations" href="index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Lotus
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Simulations</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Running Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sample-project">Sample Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#runlotus-script">runLotus Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="serial-simulations.html">Serial Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel-simulations.html">Parallel Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single-body-simulation.html">Single Body Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-body-simulation.html">Multi Body Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../grid/index.html">Grid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../update-the-docs.html">Updating the documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Lotus</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Simulations</a> &raquo;</li>
+        
+      <li>Running Simulations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/manual/simulations/running-simulations.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="running-simulations">
+<span id="manual-running-simulations"></span><h1>Running Simulations<a class="headerlink" href="#running-simulations" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="#sample"><span class="std std-ref">Sample Project</span></a></li>
+<li><a class="reference internal" href="#runlotus"><span class="std std-ref">runLotus Script</span></a></li>
+</ul>
+</div>
+<div class="section" id="sample-project">
+<span id="sample"></span><h1>Sample Project<a class="headerlink" href="#sample-project" title="Permalink to this headline">¶</a></h1>
+<p>To get started, lets just trying running a sample project on a single processor. To do so, create a working directory and then copy the sample sphere project into it:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ mkdir -p ~/Workspace/projects/sphere
+$ tar -xvf ~/Dropbox/repos/sphere.tgz -C ~/Workspace/projects/sphere
+</pre></div>
+</div>
+<p>Now you can try running the sphere program:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd ~/Workspace/projects/sphere
+$ runLotus 0 test
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">runLotus</span></code> command invokes a script file which we will consider in more detail later. For now, know that it updates the libraries (if you haven&#8217;t built them yet, this may take a while) and then it runs <cite>Lotus</cite> in the <cite>test</cite> folder.</p>
+<p>As this is happening, what you should see in the terminal window is:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span> Setting up the grid, body and fluid
+ -----------------------------------
+ Stretched grid sections:
+  negative: r= 7.0%, h_max=8.4
+  positive: r= 2.5%, h_max=5.6
+ grid symmetry:  F
+ grid%stretch using r&gt;10%.
+ grid%stretch using r&gt;10%.
+ Stretched grid sections:
+  negative: r=11.9%, h_max=12.7
+  positive: r=11.9%, h_max=12.7
+ grid symmetry:  T
+ grid%stretch using r&gt;10%.
+ grid%stretch using r&gt;10%.
+ Stretched grid sections:
+  negative: r=11.9%, h_max=12.7
+  positive: r=11.9%, h_max=12.7
+ grid symmetry:  T
+ Starting time update loop
+ -----------------------------------
+   -t- , -dt-
+   0.1, 1.075
+   0.2, 1.082
+   0.3, 1.083
+…
+   9.9, 1.163
+  10.0, 1.163
+ Loop complete: writing restart files and exiting
+ -----------------------------------
+</pre></div>
+</div>
+</div>
+<div class="section" id="runlotus-script">
+<span id="runlotus"></span><h1>runLotus Script<a class="headerlink" href="#runlotus-script" title="Permalink to this headline">¶</a></h1>
+<p>Before moving on, lets take a closer look at the <cite>runLotus</cite> script, its inputs and options. The script is found in <cite>solveroopbin</cite>. The script is invoked as</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>$ runLotus &lt;n&gt; &lt;run_folder&gt; &lt;resume_path&gt;
+</pre></div>
+</div>
+<p>where</p>
+<ul>
+<li><p class="first"><code class="docutils literal"><span class="pre">n</span></code> (int): number of processors</p>
+<blockquote>
+<div><ul class="simple">
+<li>If running in serial this should be 0 and the solver should be recompiled commenting out &#8216;MPI = true&#8217; in the lotus profile.</li>
+<li>If running in parallel the available/desired number of processors should be given. The solver should also be compiled for parallel simulations.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">run_folder</span></code> (string): name of the folder in which to run the simulation</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">resume_path</span></code> (optional, string): path from <cite>run_folder</cite> to the folder from which to resume the simulation</p>
+<blockquote>
+<div><ul class="simple">
+<li>If not included, the simulation will run without resuming from a previous simulation.</li>
+<li>If set to <code class="docutils literal"><span class="pre">./</span></code>, the simulation will resume from the <cite>run_folder</cite> if possible.</li>
+<li>Otherwise, the simulation will follow <cite>resume_path</cite> and attempt to resume from there.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>For example:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>$ runLotus <span class="m">16</span> <span class="nb">test</span> ../test_old/
+</pre></div>
+</div>
+<p>will run a simulation in the test folder on 16 cores, resuming from test_old.</p>
+<p>The runLotus script does a few important things:</p>
+<ul class="simple">
+<li>It checks if <cite>run_folder</cite> exists. If so, and there is no <cite>resume_path</cite>, it moves the contents of the folder to the trash folder. If not, it makes the folder.</li>
+<li>It copies the <cite>lotus.f90 file</cite> and the contents of the postproc folder into <cite>run_folder</cite>.</li>
+<li>It changes into the run_folder and creates the executable, updating and building the libraries as needed.</li>
+<li>Finally, it runs the executable, and then the runStatus script upon completion.</li>
+</ul>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="serial-simulations.html" class="btn btn-neutral float-right" title="Serial Simulations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Simulations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Create the /scratch/$USER/Lotus folder if it does not exist
+if [ ! -d "$LOCAL_PROJ_DIR" ]; then
+  mkdir -p $LOCAL_PROJ_DIR
+  echo "Directory $LOCAL_PROJ_DIR created."
+fi
+
+# Check that at least the number of processors and the working directory is specified
+if [ $# -le 1 ]; then
+  echo "usage: runSingularity proc_num work_dir resume_dir_path"
+  exit 1
+fi
+
+# If the directories specified lack "/" at the end, add it.
+if [ $# -eq 3 ]; then
+  if [ "${3: -1}" != "/" ]; then
+    set -- "${@:1:2}" "$3/" 
+  fi
+elif [ $# -eq 2 ]; then
+  if [ "${2: -1}" != "/" ]; then
+    set -- "$1" "$2/"
+  fi
+fi
+
+# Setting default project folders in /scratch/$USER/Lotus. Comment the following lines to specify other paths
+if [ $# -eq 3 ]; then
+  set -- "$1" "$LOCAL_PROJ_DIR/$2" "$LOCAL_PROJ_DIR/$3"
+elif [ $# -eq 2 ]; then
+  set -- "$1" "$LOCAL_PROJ_DIR/$2"
+fi
+
+# Put the `lotus` singularity image in a container and run it. 
+# The /scratch folder is already binded to the $DOCKER_PROJ_DIR through the env variable $SINGULARITY_BINDPATH,
+# so it will find the projects in /scratch/$USER/Lotus automatically.
+
+singularity run $LOTUS_BIN/lotus.sif $@
+

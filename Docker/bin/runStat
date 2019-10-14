@@ -1,0 +1,13 @@
+#!/bin/sh
+chmod a+x ~/.profile
+. ~/.profile > /dev/null 2>&1
+
+python3 stat.py
+pvbatch --use-offscreen-rendering pv.py > pv.pyOut 2>&1
+convert out*.png -density 160 -resize 1280x1280 out.pdf
+
+rm report.pdf
+gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=report.pdf *.pdf > /dev/null
+
+echo "runStat:complete"
+exit 0

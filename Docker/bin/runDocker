@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Check that the Lotus folder contains a lotus.f90 and copies it to the projects directory (which is created if necessary). The /projects directory is shared between your system and the docker container.
+if [ -e $LOCAL_LOTUS_DIR/lotus.f90 ]; then
+  if [ ! -d "$LOCAL_PROJ_DIR" ]; then
+    mkdir -p $LOCAL_PROJ_DIR
+    echo "Directory $LOCAL_PROJ_DIR created."
+  fi
+  cp $LOCAL_LOTUS_DIR/lotus.f90 $LOCAL_PROJ_DIR
+else
+  echo "lotus.f90 does not exist in $LOCAL_LOTUS_DIR" 
+  exit 1
+fi
+
+# Check that at least the number of processors and the working directory is specified
+if [ $# -le 1 ]; then
+  echo "usage: runDocker proc_num work_dir resume_dir_path"
+  exit 1
+fi
+
+# If the resume-from directory is specified, add / in the end of the argument if it is not there.
+if [ $# -eq 3 ]; then
+  set -- "${@:1:2}" "$DOCKER_PROJ_DIR/$3"
+  if [ "${3: -1}" != "/" ]; then
+    set -- "${@:1:2}" "$3/" 
+  fi
+fi
+
+# Put the `lotus` docker image in a container and run it. You need to have pulled the image first.
+docker run -t -v $LOCAL_PROJ_DIR:$DOCKER_PROJ_DIR bfont/lotus $@
+
+# Remove root rights from project folder
+echo "\n Removing root privilege from project folder..."
+sudo chown -R $USER:$USER $LOCAL_PROJ_DIR/$2
+
+# Remove the duplicated lotus.f90
+rm $LOCAL_PROJ_DIR/lotus.f90
+
+# Run post-processing Python script from the project folder
+echo "\n Running python post-processing script"
+if [ -e $LOCAL_LOTUS_DIR/stat.py ]; then
+  cd $LOCAL_PROJ_DIR/$2
+  cp $LOCAL_LOTUS_DIR/stat.py .
+  runStat
+else
+  echo "stat.py does not exist in $LOCAL_LOTUS_DIR. Post-processing stopped." 
+  exit 1
+fi

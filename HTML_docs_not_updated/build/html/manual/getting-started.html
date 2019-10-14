@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Getting Started &mdash; Lotus 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Lotus 1.0 documentation" href="../index.html"/>
+        <link rel="next" title="Test Case" href="test-case.html"/>
+        <link rel="prev" title="Introduction" href="introduction.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Lotus
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#required-software">Required software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up">Setting up</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="test-case.html">Test Case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grid/index.html">Grid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulations/index.html">Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update-the-docs.html">Updating the documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lotus</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Getting Started</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/manual/getting-started.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="#required"><span class="std std-ref">Required software</span></a></li>
+<li><a class="reference internal" href="#set-up"><span class="std std-ref">Setting up</span></a></li>
+</ul>
+<div class="section" id="required-software">
+<span id="required"></span><h2>Required software<a class="headerlink" href="#required-software" title="Permalink to this headline">¶</a></h2>
+<p><strong>Linux/Unix and Developer Tools</strong></p>
+<p>Lotus needs to compile a small fortran script file at the start of every simulation. This is way too difficult to do with Windows machines. (<code class="docutils literal"><span class="pre">cmake</span></code> is an option, but we don&#8217;t recommend it.)</p>
+<p>Ubuntu comes preloaded with <code class="docutils literal"><span class="pre">git</span></code> and <code class="docutils literal"><span class="pre">make</span></code>.</p>
+<p>OSX users should open the <code class="docutils literal"><span class="pre">terminal</span></code> app and type:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git
+</pre></div>
+</div>
+<p>At the prompt, you can download the developer tools.</p>
+<p><strong>Dropbox</strong></p>
+<p>Install <a class="reference external" href="https://www.dropbox.com">dropbox</a> and join the dropbox folder ‘repos’. These instruction assume the folder is located at <code class="docutils literal"><span class="pre">~/Dropbox/repos/</span></code></p>
+<p><strong>Programming languages and libraries</strong></p>
+<dl class="docutils">
+<dt><a class="reference external" href="https://gcc.gnu.org/wiki/GFortranBinaries">gfortran</a> (v4.8+): The code is written in fortran, so you&#8217;ll need a compiler. Check your version using::</dt>
+<dd>$ gfortran &#8211;version</dd>
+</dl>
+<p><a class="reference external" href="http://www.mpich.org/downloads/">MPICH</a> : To run in parallel on a multi-core machine, you&#8217;ll need to install this library.</p>
+<p><a class="reference external" href="https://www.python.org/">python</a> : We recommend doing all of the data-analysis and visualization in python. This can also be used to run a series of simulations and to update these documents.</p>
+<p><a class="reference external" href="https://www.r-project.org/">R-project</a> : An alternative data-analysis and visualization language. Some usefull libraries to install:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo R
+&gt; install.packages(&quot;ggplot2&quot;)
+&gt; install.packages(&quot;dplyr&quot;)
+</pre></div>
+</div>
+<p><strong>Additional Software</strong></p>
+<p><a class="reference external" href="http://www.imagemagick.org/script/convert.php">convert</a> (v6.9+): Convert is a cross platform library to create and manipulate images. It is required for the code to generate images during run-time.</p>
+<p><a class="reference external" href="http://www.paraview.org/">paraview</a> : The output binary file can be read and rendered using paraview.</p>
+<p><a class="reference external" href="https://atom.io/">atom</a> : This is a great text editor with lots of add-ons for efficient and easy coding such as the <cite>language-fortran</cite> package.</p>
+</div>
+<div class="section" id="setting-up">
+<span id="set-up"></span><h2>Setting up<a class="headerlink" href="#setting-up" title="Permalink to this headline">¶</a></h2>
+<p><strong>Add Profile</strong></p>
+<p>A profile file holds a list of shortcuts and adds things to your working <code class="docutils literal"><span class="pre">PATH</span></code>.</p>
+<p>If you&#8217;re on Ubuntu:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cp ~/Dropbox/repos/profile_ubuntu.txt ~/.profile
+$ atom ~/.bashrc
+</pre></div>
+</div>
+<p>which will open the bach file. Add the lines:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># read user scripts</span>
+<span class="n">source</span> <span class="o">~/.</span><span class="n">profile</span>
+</pre></div>
+</div>
+<p>If you&#8217;re on OSX:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cp ~/Dropbox/repos/profile_osx.txt ~/.profile
+</pre></div>
+</div>
+<p>In either case, you can now open a new terminal (which will automatically invoke the profile) or <code class="docutils literal"><span class="pre">source</span></code> it in the current terminal:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ source ~/.profile
+</pre></div>
+</div>
+<p><strong>Clone Libraries</strong></p>
+<p>Now you&#8217;re ready to get Lotus. Make a Workspace folder and go into it:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ mkdir -p ~/Workspace/
+$ cd ~/Workspace
+</pre></div>
+</div>
+<p>Clone the solver repositories:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone -o dropbox ~/Dropbox/repos/solver
+$ cd solver
+$ git clone -o dropbox ~/Dropbox/repos/oop
+</pre></div>
+</div>
+<p>Note than when you clone the solver, there will be a
+separate README file in that folder. This file applies
+to an old version of the code. You do not need to
+follow those instructions for Lotus installation.</p>
+<p><strong>Build Libraries</strong></p>
+<p>This step is optional since running the Lotus will build the libraries automatically:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd ~/Workspace/solver/geom_lib
+$ make
+$ cd ../oop
+$ make
+</pre></div>
+</div>
+<p>There should be no errors though possibily a few warnings.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="test-case.html" class="btn btn-neutral float-right" title="Test Case" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="introduction.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright .
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,3 @@
+Why `--allow-run-as-root` is necessary in docker: https://github.com/open-mpi/ompi/issues/4451
+Why Vader in a Docker container prints errors and how to fix it: https://github.com/open-mpi/ompi/issues/4948
+Automatic builds - https://docs.docker.com/docker-hub/builds/

@@ -1,0 +1,151 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww25100\viewh15040\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+
+\f0\b\fs28 \cf0 \ul \ulc0 BDIM (Boundary Data Immersion Method) Notes
+\b0\fs22 \ulnone \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+
+\b\fs18 \cf0 This is not official document for BDIM. It is simply a guide for one method of utilizing BDIM for numerical simulation
+\b0\fs22 \
+\
+The following are notes and explanations for codes in BDIM. Each file in the main working folder will be elaborated in this note.\
+The main folder is 'solver'. The original solver folder consists of 'bin', 'TestPar' and 'TestSer' folders and 'README.txt'.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+
+\b\fs24 \cf0 Setting up BDIM on YOUR Computer\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+
+\b0\fs22 \cf0 Assuming that you have copied your files into your computer, you need to set up the files as home folder for ease of future use as well as for execution of BDIM code. In 'Users' directory opened with 'Terminal', you will have to create a file named '.profile'(command 'touch .profile'). This name will be recognized by the LINUX system as one of the files to search for underlying configuration. There are few files names other than '.profile' that are accepted, however, for simplicity sake we will assume '.profile' name is used.\
+\
+Within the '.profile' (by opening the created file with emacs, 'emacs .profile'), type:\
+\
+export MGLHOME='/Users/nus/Dropbox/solver' (This line indicates that the directory consists the executables files which forms the core of BDIM)\
+export PATH=$PATH:'/Applications/Tec360_2010/bin' (This line indicates the path where the binary files for Tecplot exists. This allows for shortcut 'tec360' to be used when running pre-setup macros by Gabe for displaying results)\
+\
+After this setup, the program should be able to run the test example for Serial case in 'TestSer' folder by typing:\
+'./runBDIM 0 Test'\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+
+\b\fs24 \cf0 ReadMe
+\b0\fs22 \
+For users with BDIM source files, it is strongly advisable to refer to this section. The ReadMe file is a text format file with descriptions on version control with 'git' and compilation of the source files necessary to run BDIM. Core Instructions on how to use BDIM are noted in the file. \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+
+\b\fs26 \cf0 Bin
+\fs22 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+
+\b0 \cf0 The bin file consists the main working files of BDIM. The files are all executables and the name of the files indicate what they represent. Exec_clean and Exec_update will not be necessary for works unrelated to the development of the program.\
+Exec_BDIM consist of the core working files for BDIM Method. The content is the solver for both pressure and flow.\
+Exec_geom works as translator from inp.geom file into output file readable by Tecplot for checking purpose.\
+Exec_grid is a program that will create the cartesian grid from the defined parameters. Further explanations on exec_grid can be found in TestSer description.\
+Exec_model contains the file that creates the inp.geom file from IGS or STL graphics input. The command of execution as well as parameters for exec_model are as follows:\
+\
+./exec_model inp.stl -x=15.7,-29.8,0 -r=90,0,0 -s=3*0.037 -b=0.1 -n=31,21,81 -g=T\
+Parameter Definitions:\
+-x indicates the translation on the body. For CFD simulation, it will be most recommended to place the body's centroid on the Origin of the 3D axis. The translation allows movement in 3D axis, with the flow incoming from the x-axis.\
+-r indicates the rotation of the body, to ensure conformation of the characteristic diameter (the desired Reynolds Number). Syntax indicates rotation on 3D axis.\
+-s indicates size scaling of the body. The syntax '3*0.037' indicates that the scaling of 0.037 will be applied on the three sizes on the 3 axes.\
+-b indicates the transition from solid to fluid model. The units will be based on the general currency for length, metro, inch or body length (based on the model).\
+-n indicates the number of grid points to be present on each axis, arranged as x,y,z.\
+-g indicates the need to enable grid display (will be displayable in Tecplot or not)\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+
+\b\fs26 \cf0 TestSer
+\b0\fs22 \
+TestSer contains example for serial run test case. The main files consist of inp.geom, inp.grid, inp.txt, runBDIM and tecplot folder. Both input.geom and inp.grid file are not meaningful for human reading. However, the last line in inp.grid file allows for variation and modifications on the grid design. The example of this line is shown as follows:\
+\
+./exec_grid -h=0.05 -i=192,1,3,.339 -j=128,1,1,1\
+\
+The variable h represents the spatial grid spacing. \
+While i represents grid design on x axis. The value 192 represents the total number of grid points. The best grid design will allow for the total number of grid points to be a power of two. The second parameter for i represents the length of grid upstream of the body while the third parameter represents the length of grid downstream of the body. The fourth parameter represents the ratio of upstream to downstream length of the object.\
+The same variable definition can be found for y axis in j and z axis in k.\
+A function, '-f', can be used for scaling of the current setup without having to recalculate or reconsider the grid\
+A function, '-r', can be used for expansion of grid size away from the central region for faster calculation\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+\cf0 \ul runBDIM\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+\cf0 \ulnone Copy the runBDIM executable file to the particular folder where the simulation files are located, including inp.grid, inp.geom and inp.txt.\ul \
+\ulnone To run BDIM in terminal, simply place yourself in the directory where the 'runBDIM; files are located in. After that type\
+\
+ './runBDIM [number of processor] [working directory] [restart directory]'\
+\
+[number of processor]	The number of processes working on the defined program. By default '0' indicating serial run. '1' will imply parallel run occurring in one processor. However, this will be inefficient due to  overhead on the program which will slow the computer down.\
+\
+To run the program in parallel manner, MP needs to be installed as an interpreter and link between one core to another core.\
+\
+[working directory]		Directory where all the working files and program generated files will be stored in. Some files will be zipped and need to be unzipped to be viewed.\
+[restart directory]		For simulation continuing from previous simulation, declaration on restart directory will be necessary. The simulation will resume from the last point and continuation results will be saved in working directory.\
+\
+runBDIM is openable with textile. Within runBDIM, $2 means argument number two for runBDIM. In runBDIM we will also be copying the exec_BDIM file from home directory into the present working file 'pwd'. In order to set the home directory, the following command has to be executed in terminal:\
+\
+'export MGLHOME=/Users/nus/Desktop/Work/Research/Parametric/solver'\
+\
+Command 'pad' generates the present working directory.\
+Command 'nice' in runBDIM informs the computer not to place all computing power on the currently running BDIM program.\
+Command 'nice +16', will place the current BDIM run program at lowest priority with minimum computing power.\
+Command 'nice -16' will place the current BDIM run program at highest priority with maximum computing power with mouse function almost impossible.\
+Command 'rm batch.log junk' removes the log files and junk files created by \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+\cf0 \ul Inp.txt\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+\cf0 \ulnone !! ---- Global info ---- !!\
+2			 ! number of dimensions\
+T			 ! restart switch, is the simulation continuation from previous simulation?\
+0.5			 ! print interval in nondimensional time unit, tU/D\
+35.0	     	         ! simulation end time in nondimensional time unit\
+!! ----  MPI  info  ---- !!\
+F,F	 		 ! parallel boundaries (x,y,z), represent periodic boundaries on x,y respectively\
+1,1			 ! number of blocks (x,y,z) ???\
+!! ---- Domain info ---- !!\
+0,0,0,6,0   	 ! u,p boundary type (-dims:dims) (min z, min y, min x, 0,max x, max y, max z)\
+1.0			 ! reference frame velocity\
+5.0			 ! frame ramp-up time (Nondimensional time required to reach stated frame velocity)\
+!! --- Velocity info --- !!\
+1.0e-2		 ! viscosity (dark fluid)\
+F F F 200	   	 ! vector velocity print (print?,rewind?,low resolution (reduced variable precision e.g. single precision)?, file name extension)\
+T F F 400	 	 ! scalar print (vort in 2D, lambda in 3D) (print?,rewind?,low resolution (reduced variable precision e.g. single precision)?, file name extension)\
+!! --- Apriori  info --- !!\
+!! --- Probe  info --- !!\
+!! --- Pressure info --- !!\
+T F F 300	 	 ! scalar pressure (print?,rewind?,low resolution (reduced variable precision e.g. single precision)?, file name extension)\
+!! ----  Body info  ---- !!\
+T			 ! immersed body present	(presence of body in the fluid)\
+-2		 	 ! smoothing width (The transition width from body to solid, minus indicates smoothing away from body into fluid, positive smoothing into body which will cause jaggedness (pixelation of body). A value of '-2' indicate 2 times grid spacing from body to fluid transition.\
+T T F 100 	 	! distance function print	(Distance from any points onto the surface, contour ilke plot)\
+!! ----  VOF  info  ---- !!\
+!! ---- End of info ---- !!\
+\
+\
+Command 'runStat' checks the time step, residual, multigrain solver and informations on the current run.\
+Command 'runTec' preprocesses Tecplot File from Volume-based results files to binary files readable by Tecplot\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+\cf0 \ul Files\ulnone \
+Fort.8	Indicates the Multigrid Solver status. The last 25 lines of the file indicates the breakdown of processing time in percentage and wall time required for different steps of multigrain solving.\
+FMG		Full Multigrid Solver\
+MG		Multigrid Solver [Higher values define coarser grids]\
+Mmult	Indicates the time taken for multiplying vector to matrix\
+Inner		Indicates the time taken for dot products\
+Scalar	Indicates multiplication of vector and scalar\
+\
+Fort.9 \
+Reported the time taken, estimated time taken to program completion.\
+TIme spent solving different parts of program such as pressure solver, convection, and RHS of body transition between fluid and body.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+
+\b\fs26 \cf0 TestPar
+\b0\fs22 \
+This folder consists of files for Running Examples for Parallel Computing Setup. MPI (Message Passing Interface) will be required for communication between one core and another.\
+(This section requires update from Multicore processor user)}

@@ -1,0 +1,5 @@
+export MGLHOME=$HOME'/Workspace/solver'           #path to solver
+export PATH=$PATH:$MGLHOME/bin:$MGLHOME/oop/bin   #add to PATH
+#export MPI='true'                                #uncomment for parallel runs
+export F90='gfortran'                             #name your compiler
+export OSX='true'                                 #OSX needs a special flag

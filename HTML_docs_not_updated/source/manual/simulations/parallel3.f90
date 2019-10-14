@@ -1,0 +1,16 @@
+  ...
+  m = n/b           ! number of points per block!!
+  ...
+  if(root) ...
+  ...
+!
+!    check if the .kill file has been created
+     inquire(file=".kill", exist=kill)
+     if (kill) exit time_loop
+!
+  end do time_loop
+  call flow%write()
+  call mympi_end()
+contains
+  ...
+end program parallel
