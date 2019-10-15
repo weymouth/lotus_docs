@@ -2,7 +2,7 @@
 
 **2.** [Manage Docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/)
 
-Note that the files created during the simulation will still have root privileges. These may need to be restored to user privileges for post-processing reasons as explained in the remarks.
+Note that the files created during the simulation will still have root privileges. These may need to be restored to user privileges for post-processing reasons as explained in the remarks in **11**.
 
 **3.** Test Docker: 
 ```
@@ -19,8 +19,7 @@ docker pull bfont/lotus
 **5.** Create a working directory and the required subdirectories
 
 ```
-mkdir $HOME/Workspace/docker/Lotus
-mkdir $HOME/Workspace/docker/Lotus/bin
+mkdir -p $HOME/Workspace/docker/Lotus/bin
 mkdir $HOME/Workspace/docker/Lotus/projects
 ```
 
@@ -39,12 +38,7 @@ export PATH=$PATH:$LOCAL_LOTUS_DIR/bin
 . ~/.profile
 ```
 
-**8.** Copy from Dropbox or pull from GitHub (again, send me an [email](mailto:b.fontgarcia@soton.ac.uk)) the following scripts: `runDocker`, `Dockerfile`,`lotus.f90`, `runStat` . With `git`:
-
-```
-git clone https://github.com/b-fg/Lotus-docker.git $LOCAL_LOTUS_DIR
-```
-Now put them in the relevant directory. It should look like this:
+**8.** Copy from this directory the following scripts: `bin/runDocker`, `bin/runStat`, `lotus.f90`, and `stat.py`. Put them in the relevant directory which should look like this:
 ```
 $LOCAL_LOTUS_DIR/
     lotus.f90
@@ -57,7 +51,7 @@ $LOCAL_LOTUS_DIR/
 
 The script `runDocker` is a wrap around `docker run`, which function is to create a container from the Docker image you have just pulled. Also, `runDocker` passes the arguments normally used with `runLotus` to the Docker container and launches `runStat` if the `stat.py` python is present. The script `runStat` takes care of actually running `stat.py`, which finally provides the post-processing results. 
 
-The `Dockerfile` script is the "Docker Makefile" that have been used to create the `bfont/lotus` image. You do not need this script for running the simulations, but it is informative to have a look and see how the Lotus docker image is created. Ultimatelly, the image is created using the command: `docker build -t bfont/lotus .`
+The `Dockerfile` script (no need to copy this one) is the "Docker Makefile" that have been used to create the `bfont/lotus` image. It is informative to have a look at it and see how the Lotus docker image is created. Ultimatelly, the image is created using the command: `docker build -t bfont/lotus .`
 
 **9.** Run a simulation using the `lotus.f90` script in the Lotus folder with the `runDocker` bash script:
 
