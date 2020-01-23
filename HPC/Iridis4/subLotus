@@ -9,8 +9,8 @@
 # 3. job name
 # - these can be overridden on the qsub command line
 
-#PBS -l nodes=4:ppn=16
-#PBS -l walltime=04:00:00
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=00:10:00
 #PBS -N testing
 #PBS -m abe
 
@@ -27,4 +27,4 @@ cd $PBS_O_WORKDIR
 # Run Lotus (mpif90). Note that total np must be the same as stated before. You can also use your /s$
 # directory if the simulation writes too much data for your /home directory.
 
-runLotus 64 test
+runLotus 16 test
