@@ -72,7 +72,13 @@ CONFIGURE YOUR BASH PROFILE
         . ~/.profile
     fi
 
-  Save the file as before. Now you should be good to compile and run Lotus.
+  Save the file as before.
+
+  To update the ~/.bash_profile for the current log in session you need to source the profile in the command line.
+
+  $ source ~/.bash_profile
+
+  You don't need to do this every time you log in to iridis. Now you should be good to compile and run Lotus.
 
   _______________________________________________________________________________________________________
 
@@ -131,7 +137,11 @@ CONFIGURE YOUR BASH PROFILE
   $ mkdir ~/Lotus/projects/
   $ mkdir ~/Lotus/projects/project1/
 
-  scp here you lotus.f90 file and run Lotus as usual, eg:
+  scp here you lotus.f90 file, eg:
+  
+  $ scp lotus.f90 <username>@iridis4_a.soton.ac.uk:~/Lotus/projects/project1
+
+  Run Lotus as usual, eg:
 
   $ runLotus 4 test
 _______________________________________________________________________________________________________
@@ -163,6 +173,10 @@ SUBMIT YOUR LOTUS SIMULATION INTO THE COMPUTATIONAL NODES
   Submit the job:
 
     $ qsub subLotus
+
+  Note: The qsub command will not work if you have loaded 'module purge' into the command line or your ~/.bash_profile.
+        To rectify this simply log out and log back in to iridis, making sure that you are not loading 'module purge'
+        in your ~/.bash_profile.
 
   Output data will be found in the folder specified in the subLotus file.
   Useful information about Iridis (job submissions, queues, forums, etc) can be found in:

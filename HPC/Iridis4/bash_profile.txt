@@ -15,4 +15,6 @@ if [ -f ~/.profile ]; then
 	. ~/.profile
 fi
 
+# Do not load 'module purge' or the qsub command will not work.
+
 module load null
