@@ -1,0 +1,8 @@
+#!/bin/bash
+
+END=12
+for ((i=1;i<=END;i++)); do
+    python3 itscript.py $i
+    runLotus 16 S$i
+done
+python3 restest.py
