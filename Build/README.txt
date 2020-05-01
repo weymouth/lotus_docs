@@ -16,6 +16,7 @@ Install supporting software
 	$ cd ParaView-XXX
 	$ sudo mv bin/* /usr/local/bin/
 	$ sudo mv lib/* /usr/local/lib/
+		- not working for me
 	$ cd /usr/local/lib/
 	$ sudo ln -s paraview-XXX paraview
 
