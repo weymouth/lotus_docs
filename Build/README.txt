@@ -38,7 +38,7 @@ Add profile
 	
 Adding library files and compile solver
 	You need to have access to the private Github repositories containing the source files
-	to be able to clone them into your computer.
+	to be able to clone them into your computer. Email a Lotus contributor to request access.
   	$ mkdir -p ~/Workspace/Lotus/
   	$ cd ~/Workspace/Lotus/
   	$ git clone https://github.com/weymouth/lotus_geom_lib solver
