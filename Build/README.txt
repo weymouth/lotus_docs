@@ -25,7 +25,8 @@ Install supporting software
 	$ sudo apt install python3-numpy python3-scipy python3-pandas
 
 Add profile
-	Create a ~/.profile file in the home directory and add the following lines
+	Create a ~/.profile file in the home directory
+	Open the file in a text editor, add the following lines, save and close
 		export MGLHOME=$HOME'/Workspace/Lotus/solver'
 		export PATH=$PATH:$MGLHOME/bin:$MGLHOME/oop/bin
 		export MPI='true'
