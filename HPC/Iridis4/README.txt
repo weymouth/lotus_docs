@@ -105,7 +105,7 @@ IMPORTANT!
     $ module load openmpi/1.8.3/gcc
     $ module load gcc/6.1.0
     
-# For copy and paste
+# For copy and paste:
  
 module purge
 module load binutils/2.26
@@ -155,7 +155,8 @@ module load gcc/6.1.0
   $ module load R/3.3.0
   $ module load openmpi/1.8.3/gcc
   $ module load gcc/6.1.0
-  
+ 
+# For copy and paste:
 module purge
 module load binutils/2.26
 module load R/3.3.0
