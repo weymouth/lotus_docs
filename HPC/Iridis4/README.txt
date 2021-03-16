@@ -102,7 +102,7 @@ IMPORTANT!
     $ module purge
     $ module load binutils/2.26
     $ module load R/3.3.0
-    $ module load openmpi/1.10.6/gcc
+    $ module load openmpi/1.8.3/gcc
     $ module load gcc/6.1.0
     
 # For copy and paste
@@ -110,7 +110,7 @@ IMPORTANT!
 module purge
 module load binutils/2.26
 module load R/3.3.0
-module load openmpi/1.10.6/gcc
+module load openmpi/1.8.3/gcc
 module load gcc/6.1.0
 
     Note: Loading the openmpi and the gcc order might solve the error of the 'mpi.mod' created on a different
