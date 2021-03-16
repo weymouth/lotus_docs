@@ -85,6 +85,7 @@ IMPORTANT!
 		nano ~/.profile
 		Then add #*space* in front of these lines.
 
+  Now you should be able to compile and run Lotus!
 
   To update the ~/.bash_profile for the current log in session you need to source the profile in the command line.
 
@@ -96,8 +97,6 @@ IMPORTANT!
 
   LOAD THE REQUIRED MODULES AND COMPILE LOTUS
   
-    This is the version that works for Jonah 10/02/2021.
-
     The module required to run Lotus are: R, gcc, openmpi. They can be loaded into your login node as:
 
     $ module purge
