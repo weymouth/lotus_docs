@@ -10,7 +10,7 @@
 # - these can be overridden on the qsub command line
 
 #PBS -l nodes=1:ppn=8
-#PBS -l walltime=00:2S0:00
+#PBS -l walltime=00:20:00
 #PBS -N testing
 #PBS -m abe
 
