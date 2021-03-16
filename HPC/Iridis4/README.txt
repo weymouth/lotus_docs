@@ -27,7 +27,7 @@ PULL LOTUS SOLVER FROM GITHUB
   $ cd ~/Lotus
   $ git clone https://<github-username>:<github-password>@github.com/weymouth/lotus_geom_lib.git solver
   $ cd solver
-  $ git clone https://J-Massey:N*rehersal40@github.com/weymouth/lotus_oop.git oop
+  $ git clone https://<github-username>:<github-password>@github.com/weymouth/lotus_oop.git oop
 
   The clone command pulls the 'master' branch by default. To access any other branch just use
   $ cd oop
@@ -71,8 +71,20 @@ CONFIGURE YOUR BASH PROFILE
     if [ -f ~/.profile ]; then
         . ~/.profile
     fi
+    
+IMPORTANT!
+	You might already have a ~/.profile with the following lines:
+		if [ -n "$BASH_VERSION" ]; then
+		    # include .bashrc if it exists
+		    if [ -f "$HOME/.bashrc" ]; then
+			. "$HOME/.bashrc"
+		    fi
+		fi
+	And if you "source ~/.profile" from .bashrc then it'll create an infinite loop, holding up the terminal.
+	To fix this just comment the above if statement out:
+		nano ~/.profile
+		Then add #*space* in front of these lines.
 
-  Save the file as before.
 
   To update the ~/.bash_profile for the current log in session you need to source the profile in the command line.
 

@@ -11,14 +11,7 @@ Install supporting software
     	$ which mpif90; mpif90 -v
 
     Check version of Paraview in Software Center. If <4.3:
-    Download paraview  http://www.paraview.org/download/
-    	$ tar -xvf ParaView-XXX.tar.gz
-	$ cd ParaView-XXX
-	$ sudo mv bin/* /usr/local/bin/
-	$ sudo mv lib/* /usr/local/lib/
-		- not working for me
-	$ cd /usr/local/lib/
-	$ sudo ln -s paraview-XXX paraview
+    Download paraview from Ubuntu software.
 
     Check python version, should be 3.5+
     $ python3 -V
@@ -45,7 +38,9 @@ IMPORTANT!
 		    fi
 		fi
 	And if you "source ~/.profile" from .bashrc then it'll create an infinite loop, holding up the terminal.
-	To fix this just comment the above if statement out.
+	To fix this just comment the above if statement out:
+		nano ~/.profile
+		Then add #*space* in front of these lines.
 	
 Adding library files and compile solver
 	You need to have access to the private Github repositories containing the source files
