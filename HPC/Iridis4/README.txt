@@ -27,7 +27,7 @@ PULL LOTUS SOLVER FROM GITHUB
   $ cd ~/Lotus
   $ git clone https://<github-username>:<github-password>@github.com/weymouth/lotus_geom_lib.git solver
   $ cd solver
-  $ git clone https://<github-username>:<github-password>@github.com/weymouth/lotus_oop.git oop
+  $ git clone https://J-Massey:N*rehersal40@github.com/weymouth/lotus_oop.git oop
 
   The clone command pulls the 'master' branch by default. To access any other branch just use
   $ cd oop
@@ -83,6 +83,8 @@ CONFIGURE YOUR BASH PROFILE
   _______________________________________________________________________________________________________
 
   LOAD THE REQUIRED MODULES AND COMPILE LOTUS
+  
+    This is the version that works for Jonah 10/02/2021.
 
     The module required to run Lotus are: R, gcc, openmpi. They can be loaded into your login node as:
 
@@ -91,6 +93,18 @@ CONFIGURE YOUR BASH PROFILE
     $ module load R/3.3.0
     $ module load openmpi/1.10.6/gcc
     $ module load gcc/6.1.0
+    
+# For copy and paste
+ 
+module purge
+module load binutils/2.26
+module load R/3.3.0
+module load openmpi/1.10.6/gcc
+module load gcc/6.1.0
+
+    Note: Loading the openmpi and the gcc order might solve the error of the 'mpi.mod' created on a different
+          GNU Fortran.
+
 
     In order to avoid problems with the openmpi library (mpi.mod), the FC (Fortran compiler) environment
     variable needs to be exported as:
@@ -130,6 +144,12 @@ CONFIGURE YOUR BASH PROFILE
   $ module load R/3.3.0
   $ module load openmpi/1.8.3/gcc
   $ module load gcc/6.1.0
+  
+module purge
+module load binutils/2.26
+module load R/3.3.0
+module load openmpi/1.8.3/gcc
+module load gcc/6.1.0
 
   Now you can give it a try in the login node (a very short simulation, just to see that it runs correctly).
   To do so, add a /projects folder into the ~/Lotus/ folder previously created and scp a valid lotus.f90 file).

@@ -35,6 +35,17 @@ Add profile
 		ulimit -s unlimited
 	Source the .profile file into the .bashrc file
 	$ echo "source ~/.profile" >> ~/.bashrc
+
+IMPORTANT!
+	You might already have a ~/.profile with the following lines:
+		if [ -n "$BASH_VERSION" ]; then
+		    # include .bashrc if it exists
+		    if [ -f "$HOME/.bashrc" ]; then
+			. "$HOME/.bashrc"
+		    fi
+		fi
+	And if you "source ~/.profile" from .bashrc then it'll create an infinite loop, holding up the terminal.
+	To fix this just comment the above if statement out.
 	
 Adding library files and compile solver
 	You need to have access to the private Github repositories containing the source files
