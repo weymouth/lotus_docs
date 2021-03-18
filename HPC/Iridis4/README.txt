@@ -71,8 +71,21 @@ CONFIGURE YOUR BASH PROFILE
     if [ -f ~/.profile ]; then
         . ~/.profile
     fi
+    
+IMPORTANT!
+	You might already have a ~/.profile with the following lines:
+		if [ -n "$BASH_VERSION" ]; then
+		    # include .bashrc if it exists
+		    if [ -f "$HOME/.bashrc" ]; then
+			. "$HOME/.bashrc"
+		    fi
+		fi
+	And if you "source ~/.profile" from .bashrc then it'll create an infinite loop, holding up the terminal.
+	To fix this just comment the above if statement out:
+		nano ~/.profile
+		Then add #*space* in front of these lines.
 
-  Save the file as before.
+  Save the file as before. Now you should be able to compile and run Lotus!
 
   To update the ~/.bash_profile for the current log in session you need to source the profile in the command line.
 
@@ -83,14 +96,26 @@ CONFIGURE YOUR BASH PROFILE
   _______________________________________________________________________________________________________
 
   LOAD THE REQUIRED MODULES AND COMPILE LOTUS
-
+  
     The module required to run Lotus are: R, gcc, openmpi. They can be loaded into your login node as:
 
     $ module purge
     $ module load binutils/2.26
     $ module load R/3.3.0
-    $ module load openmpi/1.10.6/gcc
+    $ module load openmpi/1.8.3/gcc
     $ module load gcc/6.1.0
+    
+# For copy and paste:
+ 
+module purge
+module load binutils/2.26
+module load R/3.3.0
+module load openmpi/1.8.3/gcc
+module load gcc/6.1.0
+
+    Note: Loading the openmpi and the gcc order might solve the error of the 'mpi.mod' created on a different
+          GNU Fortran.
+
 
     In order to avoid problems with the openmpi library (mpi.mod), the FC (Fortran compiler) environment
     variable needs to be exported as:
@@ -130,6 +155,13 @@ CONFIGURE YOUR BASH PROFILE
   $ module load R/3.3.0
   $ module load openmpi/1.8.3/gcc
   $ module load gcc/6.1.0
+ 
+# For copy and paste:
+module purge
+module load binutils/2.26
+module load R/3.3.0
+module load openmpi/1.8.3/gcc
+module load gcc/6.1.0
 
   Now you can give it a try in the login node (a very short simulation, just to see that it runs correctly).
   To do so, add a /projects folder into the ~/Lotus/ folder previously created and scp a valid lotus.f90 file).
