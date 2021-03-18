@@ -19,7 +19,8 @@ Install supporting software
 	$ sudo apt install python3-numpy python3-scipy python3-pandas
 
 Add profile
-	Create a ~/.profile file in the home directory and add the following lines
+	Create a ~/.profile file in the home directory
+	Open the file in a text editor, add the following lines, save and close
 		export MGLHOME=$HOME'/Workspace/Lotus/solver'
 		export PATH=$PATH:$MGLHOME/bin:$MGLHOME/oop/bin
 		export MPI='true'
@@ -44,7 +45,7 @@ IMPORTANT!
 	
 Adding library files and compile solver
 	You need to have access to the private Github repositories containing the source files
-	to be able to clone them into your computer.
+	to be able to clone them into your computer. Email a Lotus contributor to request access.
   	$ mkdir -p ~/Workspace/Lotus/
   	$ cd ~/Workspace/Lotus/
   	$ git clone https://github.com/weymouth/lotus_geom_lib solver

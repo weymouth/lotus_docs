@@ -85,7 +85,7 @@ IMPORTANT!
 		nano ~/.profile
 		Then add #*space* in front of these lines.
 
-  Now you should be able to compile and run Lotus!
+  Save the file as before. Now you should be able to compile and run Lotus!
 
   To update the ~/.bash_profile for the current log in session you need to source the profile in the command line.
 
